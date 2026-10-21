@@ -4,175 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chirag Gandhi | Master Portfolio</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'media',
-            theme: {
-                extend: {
-                    colors: {
-                        accentGold: '#b8860b'
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .material-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 
-                        0 1px 3px 0 rgba(0, 0, 0, 0.03);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .material-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.09), 
-                        0 2px 6px 0 rgba(0, 0, 0, 0.04);
-        }
-        @media (prefers-color-scheme: dark) {
-            .material-card {
-                background: rgba(20, 22, 30, 0.75);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3), 
-                            0 1px 3px 0 rgba(0, 0, 0, 0.2);
-            }
-        }
-        body {
-            background-color: #f4f5f7;
-            color: #111827;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #0b0d14;
-                color: #f3f4f6;
-            }
-        }
-    </style>
-</head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-accentGold selection:text-white">
-
-    <!-- Header Section -->
-    <header class="w-full py-12 md:py-16 px-6 text-center border-b border-black/5 dark:border-white/5 bg-black/[0.01] dark:bg-white/[0.01]">
-        <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-3">Chirag Gandhi</h1>
-        <p class="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 italic tracking-widest uppercase font-medium mb-3">"Securing You, Securing Your Future."</p>
-        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">Trusted advisory excellence in India since 2001 — comprehensive financial planning, insurance, loan solutions, and personal well-being under One Stop Solution.</p>
-    </header>
-
-    <!-- Main Grid Section -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 w-full">
-        <!-- Dynamic Pillars Grid -->
-        <div id="pillars-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            <!-- Content will be auto-loaded from Sheet -->
-        </div>
-
-        <!-- Verified Client Testimonials Section -->
-        <section class="mt-16 pt-12 border-t border-black/5 dark:border-white/5">
-            <h2 class="text-2xl sm:text-3xl font-black text-center mb-10 tracking-tight">Verified Client Appraisals</h2>
-            <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Content will be auto-loaded from Sheet -->
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer Section -->
-    <footer class="w-full py-10 px-6 text-center border-t border-black/5 dark:border-white/5 bg-black/[0.01] dark:bg-white/[0.01] text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-        <p class="mb-2"><span class="text-gray-500">† NYAYA grievance appeals subject to professional case vetting mandate.</span></p>
-        <p class="mb-4 font-semibold text-gray-800 dark:text-gray-200 flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-3">
-            <span><strong>Chirag Gandhi</strong></span>
-            <span class="hidden sm:inline opacity-40">|</span>
-            <a href="tel:+919712999007" class="hover:text-black dark:hover:text-white transition-colors">+91 97 12 999 007</a>
-            <span class="hidden sm:inline opacity-40">|</span>
-            <a href="mailto:cggandhi@gmail.com" class="hover:text-black dark:hover:text-white transition-colors">cggandhi@gmail.com</a>
-        </p>
-        <p class="text-xs text-gray-500 dark:text-gray-500 tracking-wide">Copyright © 2026 Chirag Gandhi. All rights reserved.</p>
-    </footer>
-
-    <!-- Sheet Data Sync Engine -->
-    <script>
-        const sheetID = '1XDo14igyPVNyjOUpOs8R1cUvkEbV7CnBejVXepbcenY';
-        const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
-
-        const iconMap = {
-            'KAVACH': '🛡️',
-            'SAMRUDDHI': '📈',
-            'SAHAY': '🤝',
-            'NYAYA †': '⚖️',
-            'NYAYA': '⚖️',
-            'SWATVA': '🏛️',
-            'LEKHA': '📑',
-            'NIDHI': '💰',
-            'SAUJANYA': '🫴'
-        };
-
-        fetch(url)
-            .then(res => res.text())
-            .then(rep => {
-                const data = JSON.parse(rep.substr(47).slice(0, -2));
-                const rows = data.table.rows;
-                
-                let pillarsHTML = '';
-                let testimonialsHTML = '';
-
-                rows.forEach(r => {
-                    const type = r.c[0] ? r.c[0].v : '';
-                    const title = r.c[1] ? r.c[1].v : '';
-                    const subtitle = r.c[2] ? r.c[2].v : '';
-                    const domain = r.c[3] ? r.c[3].v : '';
-                    const scope = r.c[4] ? r.c[4].v : '';
-
-                    if (type === 'Pillar') {
-                        const icon = iconMap[title] || '💼';
-                        pillarsHTML += `
-                            <div class="material-card p-6 sm:p-8 rounded-3xl flex flex-col justify-between">
-                                <div>
-                                    <div class="flex items-center space-x-4 mb-5">
-                                        <div class="w-16 h-16 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center text-3xl shrink-0 shadow-inner">${icon}</div>
-                                        <div>
-                                            <h3 class="text-xl sm:text-2xl font-bold tracking-wide">${title}</h3>
-                                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium">${subtitle}</p>
-                                        </div>
-                                    </div>
-                                    <div class="mb-4">
-                                        <span class="inline-block px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider rounded-xl bg-black/5 dark:bg-white/5 text-gray-700 dark:text-gray-300 border border-black/5 dark:border-white/10">${domain}</span>
-                                    </div>
-                                    <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                                        <strong class="text-black dark:text-white font-semibold">Scope & Focus Area:</strong> ${scope}
-                                    </p>
-                                </div>
-                            </div>
-                        `;
-                    } else if (type === 'Testimonial') {
-                        testimonialsHTML += `
-                            <div class="material-card p-6 rounded-2xl flex flex-col justify-between">
-                                <p class="text-sm italic text-gray-700 dark:text-gray-300 mb-4">"${title}"</p>
-                                <div class="text-xs font-bold text-gray-900 dark:text-white">— ${subtitle} <span class="font-normal text-gray-500 block">${domain}</span></div>
-                            </div>
-                        `;
-                    }
-                });
-
-                document.getElementById('pillars-grid').innerHTML = pillarsHTML;
-                document.getElementById('testimonials-grid').innerHTML = testimonialsHTML;
-            })
-            .catch(err => console.error('Data sync error:', err));
-    </script>
-
-    <!-- Anti-Inspection Script -->
-    <script>document.addEventListener('contextmenu', event => event.preventDefault());</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chirag Gandhi | Master Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .material-card {
@@ -200,6 +31,73 @@
         <h1 class="text-4xl md:text-5xl font-black mb-2">Chirag Gandhi</h1>
         <p class="text-xs uppercase tracking-widest text-gray-500 mb-2">"Securing You, Securing Your Future."</p>
         <p class="text-sm text-gray-500 max-w-xl mx-auto">Trusted advisory excellence in India since 2001 under One Stop Solution.</p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-10 w-full">
+        <div id="pillars-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+
+        <section class="mt-16 pt-12 border-t border-black/5 dark:border-white/5">
+            <h2 class="text-2xl font-black text-center mb-8">Verified Client Appraisals</h2>
+            <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        </section>
+    </main>
+
+    <footer class="py-8 px-6 text-center border-t border-black/5 dark:border-white/5 text-xs text-gray-500">
+        <p class="mb-2">† NYAYA grievance appeals subject to professional case vetting mandate.</p>
+        <p class="font-semibold text-gray-800 dark:text-gray-200">Chirag Gandhi | +91 97 12 999 007 | cggandhi@gmail.com</p>
+        <p class="mt-2">Copyright © 2026 Chirag Gandhi. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const sheetID = '1XDo14igyPVNyjOUpOs8R1cUvkEbV7CnBejVXepbcenY';
+        const icons = {'KAVACH': '🛡️', 'SAMRUDDHI': '📈', 'SAHAY': '🤝', 'NYAYA †': '⚖️', 'NYAYA': '⚖️', 'SWATVA': '🏛️', 'LEKHA': '📑', 'NIDHI': '💰', 'SAUJANYA': '🫴'};
+
+        fetch(`https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`)
+            .then(res => res.text())
+            .then(rep => {
+                const rows = JSON.parse(rep.substr(47).slice(0, -2)).table.rows;
+                let pillars = '', testimonials = '';
+
+                rows.forEach((r, index) => {
+                    // Skip the first row if it contains column headers (Type, Title, etc.)
+                    if (index === 0 && r.c[0]?.v === 'Type') return;
+
+                    const type = r.c[0]?.v ? String(r.c[0].v).trim() : '';
+                    const title = r.c[1]?.v ? String(r.c[1].v).trim() : '';
+                    const sub = r.c[2]?.v ? String(r.c[2].v).trim() : '';
+                    const domain = r.c[3]?.v ? String(r.c[3].v).trim() : '';
+                    const scope = r.c[4]?.v ? String(r.c[4].v).trim() : '';
+
+                    if (!type || !title) return;
+
+                    if (type === 'Pillar') {
+                        pillars += `<div class="material-card p-6 rounded-3xl flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center space-x-4 mb-4">
+                                    <div class="w-14 h-14 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center text-2xl">${icons[title] || '💼'}</div>
+                                    <div><h3 class="text-xl font-bold">${title}</h3><p class="text-xs text-gray-500">${sub}</p></div>
+                                </div>
+                                <span class="inline-block px-3 py-1 text-xs font-bold uppercase rounded-xl bg-black/5 dark:bg-white/5 mb-3">${domain}</span>
+                                <p class="text-sm text-gray-700 dark:text-gray-300"><strong>Scope:</strong> ${scope}</p>
+                            </div>
+                        </div>`;
+                    } else if (type === 'Testimonial') {
+                        testimonials += `<div class="material-card p-6 rounded-2xl flex flex-col justify-between">
+                            <p class="text-sm italic text-gray-700 dark:text-gray-300 mb-4">"${title}"</p>
+                            <div class="text-xs font-bold">— ${sub} <span class="font-normal text-gray-500 block">${domain}</span></div>
+                        </div>`;
+                    }
+                });
+
+                document.getElementById('pillars-grid').innerHTML = pillars;
+                document.getElementById('testimonials-grid').innerHTML = testimonials;
+            });
+
+        document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+</body>
+</html>
+ellence in India since 2001 under One Stop Solution.</p>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 py-10 w-full">
