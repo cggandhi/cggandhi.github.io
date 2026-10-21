@@ -43,6 +43,12 @@
                         0 0 20px rgba(255, 255, 255, 0.05);
         }
 
+        /* Complimentary Diagnostic Highlight Pill */
+        .diagnostic-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
         body {
             background-color: #090a0f;
             color: #f3f4f6;
@@ -60,8 +66,14 @@
 
     <!-- Dynamic Framework Grid -->
     <main class="max-w-7xl mx-auto px-6 py-12 w-full">
-        <div id="framework-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 8 Core Pillars Grid -->
+        <div id="framework-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <!-- JavaScript dynamically injects all 8 pillars here -->
+        </div>
+
+        <!-- Complimentary Diagnostics / Value-Added Services Section -->
+        <div id="diagnostics-container" class="grid grid-cols-1 gap-6">
+            <!-- JavaScript dynamically injects complimentary diagnostic features here -->
         </div>
     </main>
 
@@ -152,12 +164,20 @@
                     domain: "Advisory Courtesies",
                     scope: "Initial consultations, complimentary credit score assessments, portfolio reviews, and policy evaluations"
                 }
+            ],
+            diagnostics: [
+                {
+                    icon: "📊",
+                    title: "FREE CREDIT SCORE CHECK",
+                    badge: "Complimentary Client Diagnostic",
+                    description: "Complimentary CIBIL & Credit Health Audit available to all clients to evaluate borrowing readiness, creditworthiness, and financial health."
+                }
             ]
         };
 
         document.addEventListener("DOMContentLoaded", () => {
+            // Render 8 Pillars
             const container = document.getElementById("framework-container");
-            
             MASTER_FRAMEWORK.pillars.forEach(pillar => {
                 const card = document.createElement("div");
                 card.className = "glassmorphic-card p-6 rounded-2xl flex flex-col justify-between";
@@ -183,6 +203,28 @@
                     </div>
                 `;
                 container.appendChild(card);
+            });
+
+            // Render Complimentary Diagnostics Section
+            const diagContainer = document.getElementById("diagnostics-container");
+            MASTER_FRAMEWORK.diagnostics.forEach(diag => {
+                const diagCard = document.createElement("div");
+                diagCard.className = "glassmorphic-card diagnostic-card p-6 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4";
+                diagCard.innerHTML = `
+                    <div class="flex items-center space-x-4">
+                        <span class="text-3xl p-3 bg-accentGold/10 rounded-xl border border-accentGold/20">${diag.icon}</span>
+                        <div>
+                            <div class="flex items-center space-x-3 mb-1">
+                                <h3 class="text-lg font-bold tracking-wide text-white">${diag.title}</h3>
+                                <span class="px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider rounded-md bg-accentGold/20 text-accentGold border border-accentGold/30">
+                                    ${diag.badge}
+                                </span>
+                            </div>
+                            <p class="text-sm text-gray-300">${diag.description}</p>
+                        </div>
+                    </div>
+                `;
+                diagContainer.appendChild(diagCard);
             });
         });
     </script>
