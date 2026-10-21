@@ -1,362 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONE STOP SOLUTION · Securing You, Securing Your Future.</title>
-  <!-- Clean Executive Typography -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg-dark: #070b12;
-      --glass-surface: rgba(255, 255, 255, 0.04);
-      --glass-surface-elevated: rgba(255, 255, 255, 0.07);
-      --glass-border: rgba(255, 255, 255, 0.12);
-      --glass-border-focus: rgba(56, 189, 248, 0.45);
-      --glass-highlight: rgba(255, 255, 255, 0.08);
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
-      --accent-cyan: #38bdf8;
-      --accent-gold: #fbbf24;
-      --accent-whatsapp: #22c55e;
-      --accent-call: #0ea5e9;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chirag Gandhi | Master Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#090a0f',
+                        glassBg: 'rgba(255, 255, 255, 0.03)',
+                        glassBorder: 'rgba(255, 255, 255, 0.08)',
+                        accentGold: '#d4af37'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Glassmorphism & Spring-Physics Bouncy Hover Effect */
+        .glassmorphic-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        background 0.3s ease, 
+                        border-color 0.3s ease, 
+                        box-shadow 0.3s ease;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        .glassmorphic-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 16px 48px 0 rgba(0, 0, 0, 0.5), 
+                        0 0 20px rgba(255, 255, 255, 0.05);
+        }
 
-    body {
-      background-color: var(--bg-dark);
-      /* Ambient background lights creating true glassmorphic refraction */
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 85% 30%, rgba(251, 191, 36, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 50% 85%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
-      background-attachment: fixed;
-      color: var(--text-primary);
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      min-height: 100vh;
-      padding: 32px 16px 50px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .wrapper {
-      max-width: 540px;
-      margin: 0 auto;
-    }
-
-    /* Floating Glassmorphic Container */
-    .glass-card {
-      background: var(--glass-surface);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 var(--glass-highlight);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* Master Brand Header */
-    .brand-header {
-      text-align: center;
-      padding: 28px 20px 24px;
-      margin-bottom: 20px;
-    }
-
-    .eyebrow-tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-cyan);
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      padding: 5px 14px;
-      border-radius: 999px;
-      margin-bottom: 14px;
-    }
-
-    .brand-title {
-      font-family: 'Cinzel', serif;
-      font-size: 27px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: #ffffff;
-      margin-bottom: 6px;
-      text-shadow: 0 2px 12px rgba(255, 255, 255, 0.15);
-    }
-
-    .brand-tagline {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--accent-cyan);
-      letter-spacing: 0.03em;
-      margin-bottom: 14px;
-    }
-
-    .brand-mission {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      font-weight: 400;
-      padding: 0 10px;
-    }
-
-    /* Section Label */
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      text-align: center;
-      margin-bottom: 14px;
-    }
-
-    /* Sovereign Pillars Stack */
-    .pillars-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .pillar-card {
-      padding: 18px 20px;
-    }
-
-    .pillar-card:hover, .pillar-card:active {
-      background: var(--glass-surface-elevated);
-      border-color: var(--glass-border-focus);
-      transform: translateY(-2px);
-    }
-
-    .pillar-headline {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-
-    .pillar-name {
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      color: #ffffff;
-    }
-
-    .pillar-domain {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--accent-cyan);
-    }
-
-    .pillar-subtext {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    .dagger {
-      color: var(--accent-gold);
-      font-weight: 700;
-    }
-
-    /* Free Credit Score Diagnostic HUD */
-    .credit-hud {
-      padding: 18px 20px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      border-color: rgba(251, 191, 36, 0.28);
-      background: linear-gradient(135deg, rgba(251, 191, 36, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-    }
-
-    .credit-title {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: #fef08a;
-      margin-bottom: 3px;
-    }
-
-    .credit-desc {
-      font-size: 12px;
-      color: var(--text-secondary);
-      line-height: 1.4;
-    }
-
-    .credit-pill {
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #0f172a;
-      background: var(--accent-gold);
-      padding: 4px 10px;
-      border-radius: 8px;
-      white-space: nowrap;
-    }
-
-    /* Advisory & Contact Desk */
-    .advisory-desk {
-      padding: 24px 20px;
-      text-align: center;
-    }
-
-    .advisor-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 4px;
-    }
-
-    .advisor-role {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-
-    /* Action Buttons */
-    .button-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .action-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 20px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      color: #ffffff;
-      letter-spacing: 0.02em;
-      transition: all 0.2s ease;
-    }
-
-    .action-btn:active {
-      transform: scale(0.98);
-      filter: brightness(0.92);
-    }
-
-    .btn-whatsapp {
-      background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
-      box-shadow: 0 4px 16px rgba(22, 163, 74, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .btn-voice {
-      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .btn-icon {
-      font-size: 17px;
-    }
-
-    .contact-details {
-      font-size: 12px;
-      color: var(--text-secondary);
-      margin-bottom: 6px;
-      letter-spacing: 0.02em;
-    }
-
-    .location-tag {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .footnote {
-      font-size: 11px;
-      color: var(--text-muted);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 14px;
-      line-height: 1.5;
-    }
-  </style>
+        body {
+            background-color: #090a0f;
+            color: #f3f4f6;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between selection:bg-accentGold selection:text-black">
 
-  <div class="wrapper">
-
-    <!-- Executive Glass Header -->
-    <header class="glass-card brand-header">
-      <span class="eyebrow-tag">Private Advisory Practice</span>
-      <h1 class="brand-title">ONE STOP SOLUTION</h1>
-      <p class="brand-tagline">Securing You, Securing Your Future.</p>
-      <p class="brand-mission">
-        Reliable, comprehensive financial and insurance safeguarding under the leadership of Chirag Gandhi — focused on long-term stability, policyholder justice, and client protection.
-      </p>
+    <!-- Header Section -->
+    <header class="w-full py-12 px-6 text-center border-b border-white/5 bg-white/[0.01] backdrop-blur-md">
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-2">CHIRAG GANDHI</h1>
+        <p class="text-sm md:text-base text-gray-400 italic tracking-wider">"Securing You, Securing Your Future."</p>
     </header>
 
-    <!-- Strategic Pillars -->
-    <div class="section-label">Core Advisory Pillars</div>
-    
-    <div class="pillars-stack">
-      <!-- Pillar 1 -->
-      <article class="glass-card pillar-card">
-        <div class="pillar-headline">
-          <span class="pillar-name">KAVACH</span>
-          <span class="pillar-domain">Insurance · The Sovereign Shield</span>
+    <!-- Dynamic Framework Grid -->
+    <main class="max-w-7xl mx-auto px-6 py-12 w-full">
+        <div id="framework-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- JavaScript dynamically injects all 8 pillars here -->
         </div>
-        <p class="pillar-subtext">Comprehensive risk management & asset protection (Life · Health · Motor · Business · Digital & Payment Fraud).</p>
-      </article>
+    </main>
 
-      <!-- Pillar 2 -->
-      <article class="glass-card pillar-card">
-        <div class="pillar-headline">
-          <span class="pillar-name">SAMRUDDHI</span>
-          <span class="pillar-domain">Investment · The Enduring Wealth</span>
-        </div>
-        <p class="pillar-subtext">Strategic wealth creation, future planning & capital solutions (Mutual Funds · Loans · Credit Cards).</p>
-      </article>
+    <!-- Footer Section -->
+    <footer class="w-full py-8 px-6 text-center border-t border-white/5 bg-white/[0.01] text-sm text-gray-400">
+        <p class="mb-1">
+            <span class="text-gray-500">† Subject to regulatory vetting and professional mandate.</span>
+        </p>
+        <p class="font-medium text-gray-300">
+            <strong>Chirag Gandhi</strong> | 
+            <a href="tel:+919712999007" class="hover:text-white transition-colors">+91 97 12 999 007</a> | 
+            <a href="mailto:cggandhi@gmail.com" class="hover:text-white transition-colors">cggandhi@gmail.com</a>
+        </p>
+    </footer>
 
-      <!-- Pillar 3 -->
-      <article class="glass-card pillar-card">
-        <div class="pillar-headline">
-          <span class="pillar-name">SAHAY</span>
-          <span class="pillar-domain">Claims · The Guiding Hand</span>
-        </div>
-        <p class="pillar-subtext">Dedicated professional handholding and end-to-end guidance through claim filing and settlement.</p>
-      </article>
+    <!-- SSOT Data Engine & Dynamic DOM Injector -->
+    <script>
+        const MASTER_FRAMEWORK = {
+            advisor: {
+                name: "Chirag Gandhi",
+                tagline: "Securing You, Securing Your Future.",
+                phone: "+91 97 12 999 007",
+                email: "cggandhi@gmail.com"
+            },
+            pillars: [
+                {
+                    id: 1,
+                    name: "KAVACH",
+                    icon: "🛡️",
+                    subtitle: "The Sovereign Shield",
+                    domain: "Insurance",
+                    scope: "Comprehensive risk management & asset protection (Life · Health · Motor · Business · Digital & Payment Fraud)"
+                },
+                {
+                    id: 2,
+                    name: "SAMRUDDHI",
+                    icon: "📈",
+                    subtitle: "The Enduring Wealth",
+                    domain: "Investment & Credit",
+                    scope: "Strategic wealth creation, future planning & capital solutions (Mutual Funds · Loans · Credit Cards)"
+                },
+                {
+                    id: 3,
+                    name: "SAHAY",
+                    icon: "🤝",
+                    subtitle: "The Guiding Hand",
+                    domain: "Claims Assistance",
+                    scope: "Dedicated professional handholding and end-to-end guidance through claim filing and settlement"
+                },
+                {
+                    id: 4,
+                    name: "NYAYA",
+                    icon: "⚖️",
+                    subtitle: "The Righteous Stand",
+                    domain: "Legal & Grievances",
+                    scope: "Redressal support for claim rejections, short settlements, policy mis-selling, and Ombudsman appeals",
+                    isVetted: true
+                },
+                {
+                    id: 5,
+                    name: "SWATVA",
+                    icon: "🏛️",
+                    subtitle: "The Core Identity",
+                    domain: "Identity & Documentation",
+                    scope: "Credentialing, sovereign records, and legal identification verification"
+                },
+                {
+                    id: 6,
+                    name: "LEKHA",
+                    icon: "📑",
+                    subtitle: "The Pecuniary Registry",
+                    domain: "Fiscal Accounts & Compliance",
+                    scope: "Income tax returns, financial accounts, and fiscal compliance management"
+                },
+                {
+                    id: 7,
+                    name: "NIDHI",
+                    icon: "💰",
+                    subtitle: "The Monetary Hub",
+                    domain: "Credit Solutions",
+                    scope: "Credit access, loan facilitation, liquidity optimization, and card provisioning"
+                },
+                {
+                    id: 8,
+                    name: "SAUJANYA",
+                    icon: "🫴",
+                    subtitle: "The Open Threshold",
+                    domain: "Advisory Courtesies",
+                    scope: "Initial consultations, complimentary credit score assessments, portfolio reviews, and policy evaluations"
+                }
+            ]
+        };
 
-      <!-- Pillar 4 -->
-      <article class="glass-card pillar-card">
-        <div class="pillar-headline">
-          <span class="pillar-name">NYAYA <span class="dagger">†</span></span>
-          <span class="pillar-domain">Appeals · The Righteous Stand</span>
-        </div>
-        <p class="pillar-subtext">Redressal support for claim rejections, short settlements, and Ombudsman appeals.</p>
-      </article>
-    </div>
-
-    <!-- Free Credit Score Value-Add -->
-    <div class="glass-card credit-hud">
-      <div>
-        <div class="credit-title">FREE CREDIT SCORE CHECK</div>
-        <p class="credit-desc">Complimentary CIBIL & credit health audit to evaluate borrowing readiness.</p>
-      </div>
-      <span class="credit-pill">Complimentary</span>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById("framework-container");
+            
+            MASTER_FRAMEWORK.pillars.forEach(pillar => {
+                const card = document.createElement("div");
+                card.className = "glassmorphic-card p-6 rounded-2xl flex flex-col justify-between";
+                
+                const daggerMark = pillar.isVetted ? " †" : "";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center space-x-3 mb-3">
+                            <span class="text-3xl">${pillar.icon}</span>
+                            <h3 class="text-xl font-bold tracking-wide">
+                                ${pillar.id}. ${pillar.name}${daggerMark} — <span class="font-normal text-gray-400 text-sm md:text-base">${pillar.subtitle}</span>
+                            </h3>
+                        </div>
+                        <div class="mb-3">
+                            <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-white/5 text-gray-300 border border-white/10">
+                                Domain: ${pillar.domain}
+                            </span>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            <strong class="text-white font-medium">Scope & Focus Area:</strong> ${pillar.scope}
+                        </p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        });
+    </script>
+</body>
+</html>
+an class="credit-pill">Complimentary</span>
     </div>
 
     <!-- Direct Advisory Desk HUD -->
