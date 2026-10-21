@@ -22,31 +22,12 @@
         }
     </script>
     <style>
-        /* Glassmorphism & Spring-Physics Bouncy Hover Effect */
         .glassmorphic-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                        background 0.3s ease, 
-                        border-color 0.3s ease, 
-                        box-shadow 0.3s ease;
-        }
-
-        .glassmorphic-card:hover {
-            transform: translateY(-6px) scale(1.01);
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 16px 48px 0 rgba(0, 0, 0, 0.5), 
-                        0 0 20px rgba(255, 255, 255, 0.05);
-        }
-
-        /* Complimentary Diagnostic Highlight Pill */
-        .diagnostic-card {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(255, 255, 255, 0.02));
-            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         body {
@@ -64,16 +45,170 @@
         <p class="text-sm md:text-base text-gray-400 italic tracking-wider">"Securing You, Securing Your Future."</p>
     </header>
 
-    <!-- Dynamic Framework Grid -->
+    <!-- Main Framework Grid -->
     <main class="max-w-7xl mx-auto px-6 py-12 w-full">
-        <!-- 8 Core Pillars Grid -->
-        <div id="framework-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <!-- JavaScript dynamically injects all 8 pillars here -->
-        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-        <!-- Complimentary Diagnostics / Value-Added Services Section -->
-        <div id="diagnostics-container" class="grid grid-cols-1 gap-6">
-            <!-- JavaScript dynamically injects complimentary diagnostic features here -->
+            <!-- 1. KAVACH -->
+            <div class="glassmorphic-card p-6 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="text-3xl">🛡️</span>
+                        <h3 class="text-xl font-bold tracking-wide">
+                            1. KAVACH — <span class="font-normal text-gray-400 text-sm md:text-base">The Sovereign Shield</span>
+                        </h3>
+                    </div>
+                    <div class="mb-3">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-white/5 text-gray-300 border border-white/10">
+                            Domain: Insurance
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <strong class="text-white font-medium">Scope & Focus Area:</strong> Comprehensive risk management & asset protection (Life · Health · Motor · Business · Digital & Payment Fraud)
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2. SAMRUDDHI -->
+            <div class="glassmorphic-card p-6 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="text-3xl">📈</span>
+                        <h3 class="text-xl font-bold tracking-wide">
+                            2. SAMRUDDHI — <span class="font-normal text-gray-400 text-sm md:text-base">The Enduring Wealth</span>
+                        </h3>
+                    </div>
+                    <div class="mb-3">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-white/5 text-gray-300 border border-white/10">
+                            Domain: Investment & Credit
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <strong class="text-white font-medium">Scope & Focus Area:</strong> Strategic wealth creation, future planning & capital solutions (Mutual Funds · Loans · Credit Cards)
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3. SAHAY -->
+            <div class="glassmorphic-card p-6 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="text-3xl">🤝</span>
+                        <h3 class="text-xl font-bold tracking-wide">
+                            3. SAHAY — <span class="font-normal text-gray-400 text-sm md:text-base">The Guiding Hand</span>
+                        </h3>
+                    </div>
+                    <div class="mb-3">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-white/5 text-gray-300 border border-white/10">
+                            Domain: Claims Assistance
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <strong class="text-white font-medium">Scope & Focus Area:</strong> Dedicated professional handholding and end-to-end guidance through claim filing and settlement
+                    </p>
+                </div>
+            </div>
+
+            <!-- 4. NYAYA -->
+            <div class="glassmorphic-card p-6 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="text-3xl">⚖️</span>
+                        <h3 class="text-xl font-bold tracking-wide">
+                            4. NYAYA † — <span class="font-normal text-gray-400 text-sm md:text-base">The Righteous Stand</span>
+                        </h3>
+                    </div>
+                    <div class="mb-3">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-white/5 text-gray-300 border border-white/10">
+                            Domain: Legal & Grievances
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <strong class="text-white font-medium">Scope & Focus Area:</strong> Redressal support for claim rejections, short settlements, policy mis-selling, and Ombudsman appeals
+                    </p>
+                </div>
+            </div>
+
+            <!-- 5. SWATVA -->
+            <div class="glassmorphic-card p-6 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="text-3xl">🏛️</span>
+                        <h3 class="text-xl font-bold tracking-wide">
+                            5. SWATVA — <span class="font-normal text-gray-400 text-sm md:text-base">The Core Identity</span>
+                        </h3>
+                    </div>
+                    <div class="mb-3">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-white/5 text-gray-300 border border-white/10">
+                            Domain: Identity & Documentation
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <strong class="text-white font-medium">Scope & Focus Area:</strong> Credentialing, sovereign records, and legal identification verification
+                    </p>
+                </div>
+            </div>
+
+            <!-- 6. LEKHA -->
+            <div class="glassmorphic-card p-6 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="text-3xl">📑</span>
+                        <h3 class="text-xl font-bold tracking-wide">
+                            6. LEKHA — <span class="font-normal text-gray-400 text-sm md:text-base">The Pecuniary Registry</span>
+                        </h3>
+                    </div>
+                    <div class="mb-3">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-white/5 text-gray-300 border border-white/10">
+                            Domain: Fiscal Accounts & Compliance
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <strong class="text-white font-medium">Scope & Focus Area:</strong> Income tax returns, financial accounts, and fiscal compliance management
+                    </p>
+                </div>
+            </div>
+
+            <!-- 7. NIDHI -->
+            <div class="glassmorphic-card p-6 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="text-3xl">💰</span>
+                        <h3 class="text-xl font-bold tracking-wide">
+                            7. NIDHI — <span class="font-normal text-gray-400 text-sm md:text-base">The Monetary Hub</span>
+                        </h3>
+                    </div>
+                    <div class="mb-3">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-white/5 text-gray-300 border border-white/10">
+                            Domain: Credit Solutions
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <strong class="text-white font-medium">Scope & Focus Area:</strong> Credit access, loan facilitation, liquidity optimization, and card provisioning
+                    </p>
+                </div>
+            </div>
+
+            <!-- 8. SAUJANYA -->
+            <div class="glassmorphic-card p-6 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="text-3xl">🫴</span>
+                        <h3 class="text-xl font-bold tracking-wide">
+                            8. SAUJANYA — <span class="font-normal text-gray-400 text-sm md:text-base">The Open Threshold</span>
+                        </h3>
+                    </div>
+                    <div class="mb-3">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-white/5 text-gray-300 border border-white/10">
+                            Domain: Advisory Courtesies
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <strong class="text-white font-medium">Scope & Focus Area:</strong> Initial consultations, complimentary credit score assessments, portfolio reviews, and policy evaluations
+                    </p>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -89,134 +224,9 @@
         </p>
     </footer>
 
-    <!-- SSOT Data Engine & Dynamic DOM Injector -->
-    <script>
-        const MASTER_FRAMEWORK = {
-            advisor: {
-                name: "Chirag Gandhi",
-                tagline: "Securing You, Securing Your Future.",
-                phone: "+91 97 12 999 007",
-                email: "cggandhi@gmail.com"
-            },
-            pillars: [
-                {
-                    id: 1,
-                    name: "KAVACH",
-                    icon: "🛡️",
-                    subtitle: "The Sovereign Shield",
-                    domain: "Insurance",
-                    scope: "Comprehensive risk management & asset protection (Life · Health · Motor · Business · Digital & Payment Fraud)"
-                },
-                {
-                    id: 2,
-                    name: "SAMRUDDHI",
-                    icon: "📈",
-                    subtitle: "The Enduring Wealth",
-                    domain: "Investment & Credit",
-                    scope: "Strategic wealth creation, future planning & capital solutions (Mutual Funds · Loans · Credit Cards)"
-                },
-                {
-                    id: 3,
-                    name: "SAHAY",
-                    icon: "🤝",
-                    subtitle: "The Guiding Hand",
-                    domain: "Claims Assistance",
-                    scope: "Dedicated professional handholding and end-to-end guidance through claim filing and settlement"
-                },
-                {
-                    id: 4,
-                    name: "NYAYA",
-                    icon: "⚖️",
-                    subtitle: "The Righteous Stand",
-                    domain: "Legal & Grievances",
-                    scope: "Redressal support for claim rejections, short settlements, policy mis-selling, and Ombudsman appeals",
-                    isVetted: true
-                },
-                {
-                    id: 5,
-                    name: "SWATVA",
-                    icon: "🏛️",
-                    subtitle: "The Core Identity",
-                    domain: "Identity & Documentation",
-                    scope: "Credentialing, sovereign records, and legal identification verification"
-                },
-                {
-                    id: 6,
-                    name: "LEKHA",
-                    icon: "📑",
-                    subtitle: "The Pecuniary Registry",
-                    domain: "Fiscal Accounts & Compliance",
-                    scope: "Income tax returns, financial accounts, and fiscal compliance management"
-                },
-                {
-                    id: 7,
-                    name: "NIDHI",
-                    icon: "💰",
-                    subtitle: "The Monetary Hub",
-                    domain: "Credit Solutions",
-                    scope: "Credit access, loan facilitation, liquidity optimization, and card provisioning"
-                },
-                {
-                    id: 8,
-                    name: "SAUJANYA",
-                    icon: "🫴",
-                    subtitle: "The Open Threshold",
-                    domain: "Advisory Courtesies",
-                    scope: "Initial consultations, complimentary credit score assessments, portfolio reviews, and policy evaluations"
-                }
-            ],
-            diagnostics: [
-                {
-                    icon: "📊",
-                    title: "FREE CREDIT SCORE CHECK",
-                    badge: "Complimentary Client Diagnostic",
-                    description: "Complimentary CIBIL & Credit Health Audit available to all clients to evaluate borrowing readiness, creditworthiness, and financial health."
-                }
-            ]
-        };
-
-        document.addEventListener("DOMContentLoaded", () => {
-            // Render 8 Pillars
-            const container = document.getElementById("framework-container");
-            MASTER_FRAMEWORK.pillars.forEach(pillar => {
-                const card = document.createElement("div");
-                card.className = "glassmorphic-card p-6 rounded-2xl flex flex-col justify-between";
-                
-                const daggerMark = pillar.isVetted ? " †" : "";
-                
-                card.innerHTML = `
-                    <div>
-                        <div class="flex items-center space-x-3 mb-3">
-                            <span class="text-3xl">${pillar.icon}</span>
-                            <h3 class="text-xl font-bold tracking-wide">
-                                ${pillar.id}. ${pillar.name}${daggerMark} — <span class="font-normal text-gray-400 text-sm md:text-base">${pillar.subtitle}</span>
-                            </h3>
-                        </div>
-                        <div class="mb-3">
-                            <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-white/5 text-gray-300 border border-white/10">
-                                Domain: ${pillar.domain}
-                            </span>
-                        </div>
-                        <p class="text-sm text-gray-300 leading-relaxed">
-                            <strong class="text-white font-medium">Scope & Focus Area:</strong> ${pillar.scope}
-                        </p>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-
-            // Render Complimentary Diagnostics Section
-            const diagContainer = document.getElementById("diagnostics-container");
-            MASTER_FRAMEWORK.diagnostics.forEach(diag => {
-                const diagCard = document.createElement("div");
-                diagCard.className = "glassmorphic-card diagnostic-card p-6 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4";
-                diagCard.innerHTML = `
-                    <div class="flex items-center space-x-4">
-                        <span class="text-3xl p-3 bg-accentGold/10 rounded-xl border border-accentGold/20">${diag.icon}</span>
-                        <div>
-                            <div class="flex items-center space-x-3 mb-1">
-                                <h3 class="text-lg font-bold tracking-wide text-white">${diag.title}</h3>
-                                <span class="px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider rounded-md bg-accentGold/20 text-accentGold border border-accentGold/30">
+</body>
+</html>
+                            <span class="px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider rounded-md bg-accentGold/20 text-accentGold border border-accentGold/30">
                                     ${diag.badge}
                                 </span>
                             </div>
