@@ -27,7 +27,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <header class="py-12 px-6 text-center border-b border-black/5 dark:border-white/5">
+    <header class="py-12 px-6 text-center border-b border-black/5 dark:border-white/5 bg-black/[0.01] dark:bg-white/[0.01]">
         <h1 class="text-4xl md:text-5xl font-black mb-2">Chirag Gandhi</h1>
         <p class="text-xs uppercase tracking-widest text-gray-500 mb-2">"Securing You, Securing Your Future."</p>
         <p class="text-sm text-gray-500 max-w-xl mx-auto">Trusted advisory excellence in India since 2001 under One Stop Solution.</p>
@@ -42,7 +42,7 @@
         </section>
     </main>
 
-    <footer class="py-8 px-6 text-center border-t border-black/5 dark:border-white/5 text-xs text-gray-500">
+    <footer class="py-8 px-6 text-center border-t border-black/5 dark:border-white/5 text-xs text-gray-500 bg-black/[0.01] dark:bg-white/[0.01]">
         <p class="mb-2">† NYAYA grievance appeals subject to professional case vetting mandate.</p>
         <p class="font-semibold text-gray-800 dark:text-gray-200">Chirag Gandhi | +91 97 12 999 007 | cggandhi@gmail.com</p>
         <p class="mt-2">Copyright © 2026 Chirag Gandhi. All rights reserved.</p>
@@ -50,16 +50,21 @@
 
     <script>
         const sheetID = '1XDo14igyPVNyjOUpOs8R1cUvkEbV7CnBejVXepbcenY';
-        const icons = {'KAVACH': '🛡️', 'SAMRUDDHI': '📈', 'SAHAY': '🤝', 'NYAYA †': '⚖️', 'NYAYA': '⚖️', 'SWATVA': '🏛️', 'LEKHA': '📑', 'NIDHI': '💰', 'SAUJANYA': '🫴'};
+        const icons = {
+            'KAVACH': '🛡️', 'SAMRUDDHI': '📈', 'SAHAY': '🤝', 
+            'NYAYA †': '⚖️', 'NYAYA': '⚖️', 'SWATVA': '🏛️', 
+            'LEKHA': '📑', 'NIDHI': '💰', 'SAUJANYA': '🫴'
+        };
 
         fetch(`https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`)
             .then(res => res.text())
             .then(rep => {
                 const rows = JSON.parse(rep.substr(47).slice(0, -2)).table.rows;
                 let pillars = '', testimonials = '';
+                const seenPillars = new Set();
+                const seenTestimonials = new Set();
 
                 rows.forEach((r, index) => {
-                    // Skip the first row if it contains column headers (Type, Title, etc.)
                     if (index === 0 && r.c[0]?.v === 'Type') return;
 
                     const type = r.c[0]?.v ? String(r.c[0].v).trim() : '';
@@ -70,110 +75,44 @@
 
                     if (!type || !title) return;
 
-                    if (type === 'Pillar') {
-                        pillars += `<div class="material-card p-6 rounded-3xl flex flex-col justify-between">
-                            <div>
-                                <div class="flex items-center space-x-4 mb-4">
-                                    <div class="w-14 h-14 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center text-2xl">${icons[title] || '💼'}</div>
-                                    <div><h3 class="text-xl font-bold">${title}</h3><p class="text-xs text-gray-500">${sub}</p></div>
+                    if (type === 'Pillar' && !seenPillars.has(title)) {
+                        seenPillars.add(title);
+                        pillars += `
+                            <div class="material-card p-6 rounded-3xl flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <div class="w-14 h-14 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center text-2xl shadow-inner">${icons[title] || '💼'}</div>
+                                        <div>
+                                            <h3 class="text-xl font-bold">${title}</h3>
+                                            <p class="text-xs text-gray-500">${sub}</p>
+                                        </div>
+                                    </div>
+                                    <span class="inline-block px-3 py-1 text-xs font-bold uppercase rounded-xl bg-black/5 dark:bg-white/5 mb-3">${domain}</span>
+                                    <p class="text-sm text-gray-700 dark:text-gray-300"><strong>Scope:</strong> ${scope}</p>
                                 </div>
-                                <span class="inline-block px-3 py-1 text-xs font-bold uppercase rounded-xl bg-black/5 dark:bg-white/5 mb-3">${domain}</span>
-                                <p class="text-sm text-gray-700 dark:text-gray-300"><strong>Scope:</strong> ${scope}</p>
                             </div>
-                        </div>`;
-                    } else if (type === 'Testimonial') {
-                        testimonials += `<div class="material-card p-6 rounded-2xl flex flex-col justify-between">
-                            <p class="text-sm italic text-gray-700 dark:text-gray-300 mb-4">"${title}"</p>
-                            <div class="text-xs font-bold">— ${sub} <span class="font-normal text-gray-500 block">${domain}</span></div>
-                        </div>`;
+                        `;
+                    } else if (type === 'Testimonial' && !seenTestimonials.has(title)) {
+                        seenTestimonials.add(title);
+                        testimonials += `
+                            <div class="material-card p-6 rounded-2xl flex flex-col justify-between">
+                                <p class="text-sm italic text-gray-700 dark:text-gray-300 mb-4">"${title}"</p>
+                                <div class="text-xs font-bold">— ${sub} <span class="font-normal text-gray-500 block">${domain}</span></div>
+                            </div>
+                        `;
                     }
                 });
 
                 document.getElementById('pillars-grid').innerHTML = pillars;
                 document.getElementById('testimonials-grid').innerHTML = testimonials;
-            });
+            })
+            .catch(err => console.error('Error:', err));
 
         document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
 </body>
 </html>
-ellence in India since 2001 under One Stop Solution.</p>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-4 py-10 w-full">
-        <div id="pillars-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-
-        <section class="mt-16 pt-12 border-t border-black/5 dark:border-white/5">
-            <h2 class="text-2xl font-black text-center mb-8">Verified Client Appraisals</h2>
-            <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-        </section>
-    </main>
-
-    <footer class="py-8 px-6 text-center border-t border-black/5 dark:border-white/5 text-xs text-gray-500">
-        <p class="mb-2">† NYAYA grievance appeals subject to professional case vetting mandate.</p>
-        <p class="font-semibold text-gray-800 dark:text-gray-200">Chirag Gandhi | +91 97 12 999 007 | cggandhi@gmail.com</p>
-        <p class="mt-2">Copyright © 2026 Chirag Gandhi. All rights reserved.</p>
-    </footer>
-
-    <script>
-        const sheetID = '1XDo14igyPVNyjOUpOs8R1cUvkEbV7CnBejVXepbcenY';
-        const icons = {'KAVACH': '🛡️', 'SAMRUDDHI': '📈', 'SAHAY': '🤝', 'NYAYA †': '⚖️', 'NYAYA': '⚖️', 'SWATVA': '🏛️', 'LEKHA': '📑', 'NIDHI': '💰', 'SAUJANYA': '🫴'};
-
-        fetch(`https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`)
-            .then(res => res.text())
-            .then(rep => {
-                const rows = JSON.parse(rep.substr(47).slice(0, -2)).table.rows;
-                let pillars = '', testimonials = '';
-
-                rows.forEach(r => {
-                    const [type, title, sub, domain, scope] = [r.c[0]?.v, r.c[1]?.v, r.c[2]?.v, r.c[3]?.v, r.c[4]?.v];
-                    if (type === 'Pillar') {
-                        pillars += `<div class="material-card p-6 rounded-3xl flex flex-col justify-between">
-                            <div>
-                                <div class="flex items-center space-x-4 mb-4">
-                                    <div class="w-14 h-14 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center text-2xl">${icons[title] || '💼'}</div>
-                                    <div><h3 class="text-xl font-bold">${title}</h3><p class="text-xs text-gray-500">${sub}</p></div>
-                                </div>
-                                <span class="inline-block px-3 py-1 text-xs font-bold uppercase rounded-xl bg-black/5 dark:bg-white/5 mb-3">${domain}</span>
-                                <p class="text-sm text-gray-700 dark:text-gray-300"><strong>Scope:</strong> ${scope}</p>
-                            </div>
-                        </div>`;
-                    } else if (type === 'Testimonial') {
-                        testimonials += `<div class="material-card p-6 rounded-2xl flex flex-col justify-between">
-                            <p class="text-sm italic text-gray-700 dark:text-gray-300 mb-4">"${title}"</p>
-                            <div class="text-xs font-bold">— ${sub} <span class="font-normal text-gray-500 block">${domain}</span></div>
-                        </div>`;
-                    }
-                });
-
-                document.getElementById('pillars-grid').innerHTML = pillars;
-                document.getElementById('testimonials-grid').innerHTML = testimonials;
-            });
-
-        document.addEventListener('contextmenu', e => e.preventDefault());
-    </script>
-</body>
-</html>
-               </span>
-                    </div>
-                    <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                        <strong class="text-black dark:text-white font-semibold">Scope & Focus Area:</strong> Income tax returns, financial accounts, and fiscal compliance management
-                    </p>
-                </div>
-            </div>
-
-            <!-- 7. NIDHI -->
-            <div class="material-card p-6 sm:p-8 rounded-3xl flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center space-x-4 mb-4">
-                        <span class="text-3xl sm:text-4xl p-3 bg-black/5 dark:bg-white/5 rounded-2xl">💰</span>
-                        <h3 class="text-xl sm:text-2xl font-bold tracking-wide">
-                            7. NIDHI <span class="font-normal text-gray-500 dark:text-gray-400 text-sm md:text-base block sm:inline">The Monetary Hub</span>
-                        </h3>
-                    </div>
-                    <div class="mb-4">
-                        <span class="inline-block px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider rounded-xl bg-black/5 dark:bg-white/5 text-gray-700 dark:text-gray-300 border border-black/5 dark:border-white/10">
-                            DOMAIN: CREDIT SOLUTIONS
+               DOMAIN: CREDIT SOLUTIONS
                         </span>
                     </div>
                     <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
